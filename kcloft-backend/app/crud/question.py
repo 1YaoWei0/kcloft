@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Session
-from .. import models, schemas
+from .. import models
+from ..schemas.question import QuestionCreate
 
-def create_question(db: Session, question: schemas.QuestionCreate):
+def create_question(db: Session, question: QuestionCreate):
     db_question = models.Question(**question.dict())
     db.add(db_question)
     db.commit()

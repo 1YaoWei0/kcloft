@@ -17,13 +17,22 @@
           required
         />
         <button class="btn" type="submit">Login</button>
+        <div class="login-container">
+          <button @click="handleLogin" class="login-button">Login with Microsoft</button>
+        </div>
       </form>
     </div>
   </div>
+  
 </template>
 
 <script setup lang="ts">
-// UI only, no logic yet
+import { msalInstance } from "../auth/authService";
+import { loginRequest } from "../auth/authConfig";
+
+function handleLogin() {
+  msalInstance.loginRedirect(loginRequest);
+}
 </script>
 
 <style scoped>
